@@ -46,8 +46,8 @@ class Brute(Enemy): #Standard no functionality
     
 
 class Shooter(Enemy): #Shoots standard bullets
-    def __init__(self,x, y, alive):
-        super().__init__(x, y, alive)
+    def __init__(self,x, y, health):
+        super().__init__(x, y, health)
     def draw(self):
         stddraw.setXscale(-1, 1)
         stddraw.setYscale(0, 2)
@@ -59,8 +59,8 @@ class Shooter(Enemy): #Shoots standard bullets
         return 200  
 
 class Bomber(Enemy): #Shoots bullets with blast radius 
-    def __init__(self,x, y, alive):
-        super().__init__(x, y, alive)
+    def __init__(self,x, y, health):
+        super().__init__(x, y, health)
     def draw(self):
         stddraw.setXscale(-1, 1)
         stddraw.setYscale(0, 2)
@@ -72,8 +72,8 @@ class Bomber(Enemy): #Shoots bullets with blast radius
         return 300  
 
 class Bonus(Enemy): #Drops Power ups
-     def __init__(self,x, y, alive):
-        super().__init__(x, y, alive)
+     def __init__(self,x, y, health):
+        super().__init__(x, y, health)
      def draw(self): 
         stddraw.setXscale(-1, 1)
         stddraw.setYscale(0, 2)
