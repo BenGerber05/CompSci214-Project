@@ -46,8 +46,8 @@ class Brute(Enemy): #Standard no functionality
     
 
 class Shooter(Enemy): #Shoots standard bullets
-    def __init__(self,x, y, health):
-        super().__init__(x, y, health)
+    def __init__(self,x, y, alive):
+        super().__init__(x, y, alive)
     def draw(self):
         stddraw.setXscale(-1, 1)
         stddraw.setYscale(0, 2)
@@ -59,8 +59,8 @@ class Shooter(Enemy): #Shoots standard bullets
         return 200  
 
 class Bomber(Enemy): #Shoots bullets with blast radius 
-    def __init__(self,x, y, health):
-        super().__init__(x, y, health)
+    def __init__(self,x, y, alive):
+        super().__init__(x, y, alive)
     def draw(self):
         stddraw.setXscale(-1, 1)
         stddraw.setYscale(0, 2)
@@ -72,8 +72,8 @@ class Bomber(Enemy): #Shoots bullets with blast radius
         return 300  
 
 class Bonus(Enemy): #Drops Power ups
-     def __init__(self,x, y, health):
-        super().__init__(x, y, health)
+     def __init__(self,x, y, alive):
+        super().__init__(x, y, alive)
      def draw(self): 
         stddraw.setXscale(-1, 1)
         stddraw.setYscale(0, 2)
@@ -84,12 +84,12 @@ class Bonus(Enemy): #Drops Power ups
      def score(self):
         return 400  
 
-def drop(enemy:list[list]): #Vertical Animation
+def drop(enemy:list[list]): #Vertical
     
     rows = len(enemy)
     columns = Enemy.columns
     for i in range(rows):
-        for j in range(columns):
+        for j in range(len(enemy[i])):
             enemy[i][j].updateY()
             enemy[i][j].xSpeed *= -1
 
@@ -97,10 +97,9 @@ def move(enemy:list[list]): #Horizontal Movement
 
     stddraw.clear()
     rows = len(enemy)
-    columns = Enemy.columns
 
     for i in range(rows):
-        for j in range(columns):
+        for j in range(len(enemy[i])):
             enemy[i][j].updateX()
             if enemy[i][j].hitLeft():
                  drop(enemy)
@@ -123,33 +122,34 @@ def updateSpeed(speed, enemy): #To increase speed later on
 def spawnRow():  # Method
 
         columns = 9   
-        enemy = stdarray.create1D(columns,Enemy(0,0, 0))
+        enemyRow = []
 
         initial = -1+0.1
         shift = 0.15
 
         spawn_chance = 0.5 # initially a 50% chance of spawning
      
+    
         for j in range(columns):
-
+          
             x = (0.01+shift)*j +initial
             y = 2-1*0.15
 
             spawn = random.random()
-            if spawn < spawn_chance: #doesnt spawn
-                enemy[j] = Enemy(x,y, 0)
-            else: #sets enemy type
+
+            if not(spawn < spawn_chance): 
+
                 random_type = random.random()
                 if random_type<0.3:
-                    enemy[j] = Brute(x,y,2)
+                    enemyRow += [Brute(x,y,2)]
                 elif random_type<0.6:
-                    enemy[j] = Shooter(x,y,1)
+                    enemyRow += [Shooter(x,y,1)]
                 elif random_type<0.9:
-                    enemy[j] = Bomber(x,y,1)
+                    enemyRow += [Bomber(x,y,1)]
                 elif random_type<1:
-                    enemy[j] = Bonus(x,y,3)
+                    enemyRow += [Bonus(x,y,3)]
 
-        return enemy       
+        return enemyRow       
 
 def main(): 
 
