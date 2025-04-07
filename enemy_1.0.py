@@ -151,7 +151,7 @@ def spawnRow():  # Method
 
         return enemyRow       
 
-def main(): 
+def main(): # this can be run in defender file 
 
    enemy = []
    enemy += [spawnRow()]
