@@ -84,7 +84,7 @@ class Bonus(Enemy): #Drops Power ups
      def score(self):
         return 400  
 
-def drop(enemy:list[list]): #Vertical
+def drop(enemy:list[list]): #Vertical Animation
     
     rows = len(enemy)
     columns = Enemy.columns
@@ -123,7 +123,7 @@ def updateSpeed(speed, enemy): #To increase speed later on
 def spawnRow():  # Method
 
         columns = 9   
-        enemy = stdarray.create1D(columns,Enemy(0,0, False))
+        enemy = stdarray.create1D(columns,Enemy(0,0, 0))
 
         initial = -1+0.1
         shift = 0.15
