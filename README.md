@@ -14,3 +14,6 @@
 The rest is seperated into the enemy class and player class
 Enemy class: created a Functions class where all the functions that work on the array of enemies are run. Created a killEnemy method
 Player class: removed the movement class: Instead ran the handle key and updatePosition straight from the main game loop ~ Rourke
+
+12/04/2025: projectile class created. player updated to have a new method: wants_to_fire which fires a projectille. handle_key method updated to have a shooting processor for the SPACE key.
+updated game loop in progress. ~ Ben
