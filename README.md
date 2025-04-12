@@ -16,4 +16,5 @@ Enemy class: created a Functions class where all the functions that work on the 
 Player class: removed the movement class: Instead ran the handle key and updatePosition straight from the main game loop ~ Rourke
 
 12/04/2025: projectile class created. player updated to have a new method: wants_to_fire which fires a projectille. handle_key method updated to have a shooting processor for the SPACE key.
-updated game loop in progress. ~ Ben
+enemy class updated for removal of baddies when health = 0
+updated game loop to v2.1, adding a collision clause (sorry rourke, i was on a roll :) ) ~ Ben
