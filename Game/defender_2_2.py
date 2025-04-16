@@ -43,9 +43,9 @@ def main():
                         projectiles.remove(proj)
                         if enemy.health <= 1:
                             row.remove(enemy)
-                            pass
-                if len(row) == 0:
-                    enemy_list.remove(row)      
+                             if len(row) == 0:
+                                 enemy_list.remove(row)      
+               
 
             if proj.is_off_screen() and proj in projectiles:
                 projectiles.remove(proj)
