@@ -20,3 +20,9 @@ enemy class updated for removal of baddies when health = 0
 updated game loop to v2.1, adding a collision clause (sorry rourke, i was on a roll :) ) ~ Ben
 
 14/04/2025: uoloaded player2_2 and enemy 2_1. For enemy i only changed it to include the pngs but i kept the boxes for now incase we want to make the enemies larger so it will be easier to scale the images. player file now includes the rotation of the space ship. I dont know if you guys want to have different ships or not but there are more if you guys want that to be random maybe ~ Z
+
+16/04/2025: Ben ~ consolidate Z's function into new loop. Sounds, Power Ups, Projectile types
+            Zak ~ Loading screen & End screen & in game bg
+            Rourke ~ Score, enemy proj's, Diff scaling
+            Priority : Loading screen & End screen & Score & Background
+            Extra: Shooting, proj types, power ups
