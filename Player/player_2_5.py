@@ -93,8 +93,6 @@ class Player:
 
         self.rotated_image = rotated
     
-    def is_hit(self, projectile: Projectile): # this method needs work: there is some offset or size of the player thats making it get hit when the image is not touching a bullet
+    def is_hit(self, projectile: Projectile):
         half_length = self.IMAGE_SCALAR/2
-        
-        return projectile.x >= self.x - half_length and  projectile.x <= self.x + half_length and  projectile.y >= self.y - half_length and projectile.y <= self.y + half_length
-    
+        return projectile.x >= self.x - half_length/2 and  projectile.x <= self.x + half_length/2 and  projectile.y >= self.y - half_length and projectile.y <= self.y + half_length
