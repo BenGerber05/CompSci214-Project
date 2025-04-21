@@ -1,6 +1,6 @@
 import math
 import stddraw
-from player_2_4.py import Player
+from player_2_4 import Player
 
 class Projectile:
     def __init__(self, x, y, angle_deg, speed=0.02):
