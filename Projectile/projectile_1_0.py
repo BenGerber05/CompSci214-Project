@@ -1,13 +1,13 @@
 import math
 import stddraw
-from player_2_4 import Player
+from player_2_4 import player
 
 class Projectile:
     def __init__(self, x, y, angle_deg, speed=0.02):
         self.x = x
         self.y = y
         self.speed = speed
-        self.angle_deg = Player.angle_deg
+        self.angle_deg = player.angle_deg
         # Convert angle to radians for math functions
         
         angle_rad = math.radians(angle_deg)
