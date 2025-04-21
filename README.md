@@ -26,3 +26,6 @@ updated game loop to v2.1, adding a collision clause (sorry rourke, i was on a r
             Rourke ~ Score, enemy proj's, Diff scaling
             Priority : Loading screen & End screen & Score & Background
             Extra: Shooting, proj types, power ups
+
+21/04/2025: Added basic shooting functionality and difficulty scaling for enemies. Added score update in main class. Still need to add different projectile types for enemies but that will take the backseat for now. - Rourke
+
