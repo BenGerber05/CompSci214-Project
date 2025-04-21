@@ -6,7 +6,7 @@ class Player:
     IMAGE_SCALAR = 0.4
     PINK_SHIP = Picture("Pink_Ship.png")
 
-    def __init__(self, x, y, fire_rate, health):
+    def __init__(self, x, y, fire_rate, health, angle_deg):
         self.x = x
         self.y = y
         self.fire_rate = fire_rate
@@ -14,8 +14,7 @@ class Player:
         self.radius = 0.1
         self.x_vel = 0
         self.should_fire = False
-
-        self.angle_deg = 0
+        self.angle_deg = angle_deg
         self.original_image = Player.PINK_SHIP
         self.rotated_image = self.original_image
 
