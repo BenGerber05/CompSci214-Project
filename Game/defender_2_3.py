@@ -8,7 +8,7 @@ def main():
     stddraw.setYscale(0, 2)
 
     enemyMethods = Functions()
-    player = Player(x=0, y=0.15, fire_rate=1, health=3)
+    player = Player(x=0, y=0.15, fire_rate=1, health=3, angle_deg = 0)
     enemy_list = [enemyMethods.spawnRow()]
     projectiles = []
     player_angle = 90  # fixed upward
