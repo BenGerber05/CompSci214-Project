@@ -161,14 +161,4 @@ class Functions: #Methods to be used on an array of enemies
                 elif random_type<1:
                     enemyRow += [Bonus(x,y,3)]
 
-        return enemyRow       
-
-        
-
-   
-
-        
-
-
-
-    
+        return enemyRow
