@@ -110,7 +110,7 @@ class Bonus(Enemy): #Drops Power ups
                 for shield in shields:
                     if shield.position in openPos:
                         openPos.remove(shield.position)
-                newPos = int(random.random()*len(openPos)) - 1
+                newPos = openPos[int(random.random()*len(openPos)) - 1]
                 shields += [Shield(newPos)]
                 
         else:
