@@ -1,7 +1,7 @@
 import stddraw, math
 from picture import Picture
 from color import Color  # Needed for rotating logic
-from projectile_2_0 import Projectile
+from projectile_2_1 import Projectile
 
 class Player:
     IMAGE_SCALAR = 0.4
