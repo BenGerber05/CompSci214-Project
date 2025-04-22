@@ -1,7 +1,7 @@
 import stddraw
 import stdarray
 import random
-from projectile_2_0 import Projectile
+from projectile_2_1 import Projectile
 from picture import Picture
 import time
 
