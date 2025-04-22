@@ -1,6 +1,6 @@
 import stddraw
 from player_2_5 import Player
-from projectile_2_0 import Projectile
+from projectile_2_1 import Projectile
 from enemy_3_1 import Functions
 import time
 import math
