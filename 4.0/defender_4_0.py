@@ -107,6 +107,11 @@ def main():
                     shield.health-=1
                     if shield.health == 0:
                         shields.remove(shield)
+        # Show score
+        stddraw.setFontSize(s=22)
+        stddraw.setFontFamily(f="Arial")
+        stddraw.setPenColor(stddraw.WHITE)
+        stddraw.text(-0.8, 1.93, "Score: " + str(player_score))
         
         # Update and draw enemy projectiles and check player for hits
         for proj in enemy_projectiles[:]:
