@@ -35,6 +35,11 @@ def main():
     shields = []
     
     print("Game started. Use A/D/S to move, Space to fire, Q to quit.")
+
+    Health_1 = Picture("Lives_1.jpg")
+    Health_2 = Picture("Lives_2.jpg")
+    Health_3 = Picture("Lives_3.jpg")
+    
      # start page ========================
     START_PAGE1 = Picture("START_SCREEN1.png")
     START_PAGE2 = Picture("START_SCREEN2.png")
@@ -74,6 +79,15 @@ def main():
         player.draw()
         enemyMethods.move(enemy_list, enemy_spawn_rate, enemy_speed,enemy_last_fire, enemy_projectiles)
 
+        #health hud ===============
+        if player.health == 3:
+            stddraw.picture(Health_3, 0.7,1.9,0.5,0.15)
+        elif player.health == 2:
+            stddraw.picture(Health_2, 0.7,1.9,0.5,0.15)
+        elif player.health == 1:                
+            stddraw.picture(Health_1, 0.7,1.9,0.5,0.15)
+        # =========================
+        
         # Fire projectile
         if player.wants_to_fire():
             proj = Projectile(player.x, player.y + player.radius, player_angle)
