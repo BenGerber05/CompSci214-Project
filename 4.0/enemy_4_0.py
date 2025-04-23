@@ -17,7 +17,7 @@ class Enemy:
 
     REF_SPEED = 0.003
 
-    VERT_START = 0.1
+    VERT_START = 0.17
     HOR_START = ALIEN_SIZE - 1
     COLUMNS = 6
 
