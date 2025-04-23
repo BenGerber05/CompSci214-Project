@@ -80,6 +80,7 @@ def main():
             proj.update()
             proj.draw()
             if player.is_hit(proj):
+                enemy_projectiles.remove(proj)
                 player.health -= 1
                 if player.health <= 0:
                     running = False
