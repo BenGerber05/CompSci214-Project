@@ -35,8 +35,27 @@ def main():
     shields = []
     
     print("Game started. Use A/D/S to move, Space to fire, Q to quit.")
-   
-    running = True
+     # start page ========================
+    START_PAGE1 = Picture("START_SCREEN1.png")
+    START_PAGE2 = Picture("START_SCREEN2.png")
+
+    running = False # dont run main game yet
+    stddraw.setPenColor(stddraw.WHITE)
+    while not running:
+        stddraw.clear()
+        stddraw.picture(START_PAGE1, 0, 1, 2.3, 2.3)
+        stddraw.show(150)
+        stddraw.clear()
+        stddraw.picture(START_PAGE2, 0, 1, 2.3, 2.3)
+        stddraw.show(150)
+
+        if stddraw.hasNextKeyTyped():
+            key = stddraw.nextKeyTyped().lower() # account for caps
+            if key == 'e':
+                running = True # only start main game loop now
+
+    # start page ========================
+    
     while running:
       
         current_time = time.time() - start_time
