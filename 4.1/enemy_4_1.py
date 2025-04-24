@@ -119,9 +119,9 @@ class Bonus(Enemy): #Drops Power ups
              player.health +=1
         elif player.fire_rate == 0.45:
              player.fire_rate = 0.25     
-        
-
-         
+        else:
+            return "BOOM"  
+ 
      def score(self):
         return 500  
        
