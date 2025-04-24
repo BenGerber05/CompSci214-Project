@@ -22,7 +22,7 @@ def main():
     projectiles = []
 
 
-    highest_score:int = -3000
+    highest_score:int = -300
 
 
     START_TIME = time.time()
