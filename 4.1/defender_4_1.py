@@ -5,13 +5,16 @@ from enemy_4_1 import Functions, Bonus
 from picture import Picture
 import time
 import math
-
+import pygame
 
 
 def main():
     
     stddraw.setXscale(-1, 1)
     stddraw.setYscale(0, 2)
+
+    pygame.mixer.init()
+    shoot_sound = pygame.mixer.Sound("Pew.mp3")
 
     enemyMethods = Functions()
         
@@ -100,6 +103,7 @@ def main():
         
         # Fire projectile
         if player.wants_to_fire():
+            shoot_sound.play()
             proj = Projectile(player.x, player.y + player.radius, player.angle_deg)
             projectiles.append(proj)
         
