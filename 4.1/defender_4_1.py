@@ -47,8 +47,6 @@ def main():
     Health_1 = Picture("Lives_1.jpg")
     Health_2 = Picture("Lives_2.jpg")
     Health_3 = Picture("Lives_3.jpg")
-
-    GameOver_Screen1 = Picture("GAMEOVER_SCREEN1.png")
     
      # start page ========================
     START_PAGE1 = Picture("START_SCREEN1.png")
@@ -68,17 +66,12 @@ def main():
             key = stddraw.nextKeyTyped().lower() # account for caps
             if key == 'e':
                 running = True # only start main game loop now
-             if key == 'q':
-                running = False
-                break
-    # ========================
-    
-    while running:
 
-        if not running:
-            print(running)
-        
-      
+    # start page ========================
+
+
+    while running:
+ 
         current_time = time.time() - START_TIME
         
         spawn_scale = math.log(current_time/400 + 1) #scales such that spawn rate increases logarithmically and reaches 1 after around 5 minutes
@@ -113,11 +106,27 @@ def main():
         stddraw.setFontFamily(f="Arial")
         stddraw.setPenColor(stddraw.WHITE)
         stddraw.text(-0.8, 1.93, "Score: " + str(player_score))
+
+        for shield in shields:
+             shield.draw()
+             for proj in projectiles[:]:
+                 if shield.is_hit(proj):
+                     projectiles.remove(proj)
+                     shield.health-=1
+                     if shield.health == 0:
+                         shields.remove(shield)
+             for proj in enemy_projectiles[:]:
+                 if shield.is_hit(proj):
+                     enemy_projectiles.remove(proj)
+                     shield.health-=1
+                     if shield.health == 0:
+                         shields.remove(shield)
         
-        # Update and draw enemy projectiles and check player & shield for hits
+        # Update and draw enemy projectiles and check player for hits
         for proj in enemy_projectiles[:]:
             proj.update()
             proj.draw()
+
             if player.is_hit(proj):
                 enemy_projectiles.remove(proj)
                 player.health -= 1
@@ -125,21 +134,11 @@ def main():
                 player_score -= 1000
                 if player.health <= 0:
                     running = False
-                    #add game over screen
-                    stddraw.picture(GameOver_Screen1)
-                    break
-
-            for shield in shields: 
-                if shield.is_hit(proj):
-                    projectiles.remove(proj)
-                    shield.health-=1
-                    if shield.health == 0:
-                        shields.remove(shield)
+                    endgame
 
             if proj.is_off_screen() and proj in enemy_projectiles:
                 enemy_projectiles.remove(proj)
         
-
         # Update and draw projectiles
         for proj in projectiles[:]:
             proj.update()
@@ -162,13 +161,6 @@ def main():
                                 enemy_last_fire.pop(count) 
                 count +=1                     
                
-            for shield in shields:
-                if shield.is_hit(proj):
-                    projectiles.remove(proj)
-                    shield.health-=1
-                    if shield.health == 0:
-                        shields.remove(shield)
-
             if proj.is_off_screen() and proj in projectiles:
                 projectiles.remove(proj)
 
@@ -182,6 +174,10 @@ def main():
         
                  
         stddraw.show(20)
+
+
+    
+    
 
 if __name__ == '__main__':
     main()
