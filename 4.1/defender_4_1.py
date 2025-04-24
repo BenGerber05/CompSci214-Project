@@ -9,6 +9,7 @@ import math
 
 
 def main():
+    
     stddraw.setXscale(-1, 1)
     stddraw.setYscale(0, 2)
 
@@ -19,20 +20,25 @@ def main():
 
     player_score = 0
 
-    start_time = time.time()
+    START_TIME = time.time()
 
-    enemy_start_rate = 0.4
+    ENEMY_START_SPAWN_RATE = 0.4
     enemy_spawn_rate = 0
-    enemy_start_speed = 0.003
+    ENEMY_START_SPEED = 0.0025
     enemy_speed = 0
     enemy_last_fire = []
 
     enemy_projectiles = []
 
+    lowest_enemy = 0
+    LOWER_BOUND = 0.2
+
     spawn_scale = 0
     speed_scale = 0
 
-    enemy_list = [enemyMethods.spawnRow(enemy_start_rate,enemy_last_fire)]
+    enemy_list = [enemyMethods.spawnRow(ENEMY_START_SPAWN_RATE,enemy_last_fire)]
+
+    lowest_enemy = enemy_list[0][0].y
 
     shields = []
     
@@ -64,22 +70,25 @@ def main():
     # start page ========================
     
     while running:
+
+        if not running:
+            print(running)
+        
       
-        current_time = time.time() - start_time
+        current_time = time.time() - START_TIME
         
         spawn_scale = math.log(current_time/400 + 1) #scales such that spawn rate increases logarithmically and reaches 1 after around 5 minutes
         
-        enemy_spawn_rate = enemy_start_rate + spawn_scale 
+        enemy_spawn_rate = ENEMY_START_SPAWN_RATE + spawn_scale 
  
         if enemy_speed <= 0.006:
             speed_scale = 0.005*math.pow(math.e,current_time/700) - 0.005 #scales exponentially such that the speed reaches its maximum of 0.006 after around 5 minutes
-            enemy_speed = enemy_start_speed + speed_scale
+            enemy_speed = ENEMY_START_SPEED + speed_scale
 
         stddraw.clear(stddraw.BLACK)
         player.update_position()
         running = player.handle_key()
         player.draw()
-        enemyMethods.move(enemy_list, enemy_spawn_rate, enemy_speed,enemy_last_fire, enemy_projectiles)
 
         #health hud ===============
         if player.health == 3:
@@ -95,27 +104,13 @@ def main():
             proj = Projectile(player.x, player.y + player.radius, player_angle)
             projectiles.append(proj)
         
-        for shield in shields:
-            shield.draw()
-            for proj in projectiles[:]:
-                if shield.is_hit(proj):
-                    projectiles.remove(proj)
-                    shield.health-=1
-                    if shield.health == 0:
-                        shields.remove(shield)
-            for proj in enemy_projectiles[:]:
-                if shield.is_hit(proj):
-                    enemy_projectiles.remove(proj)
-                    shield.health-=1
-                    if shield.health == 0:
-                        shields.remove(shield)
         # Show score
         stddraw.setFontSize(s=22)
         stddraw.setFontFamily(f="Arial")
         stddraw.setPenColor(stddraw.WHITE)
         stddraw.text(-0.8, 1.93, "Score: " + str(player_score))
         
-        # Update and draw enemy projectiles and check player for hits
+        # Update and draw enemy projectiles and check player & shield for hits
         for proj in enemy_projectiles[:]:
             proj.update()
             proj.draw()
@@ -128,6 +123,14 @@ def main():
                     running = False
                     #add game over screen
                     break
+
+            for shield in shields: 
+                if shield.is_hit(proj):
+                    projectiles.remove(proj)
+                    shield.health-=1
+                    if shield.health == 0:
+                        shields.remove(shield)
+
             if proj.is_off_screen() and proj in enemy_projectiles:
                 enemy_projectiles.remove(proj)
         
@@ -144,9 +147,8 @@ def main():
                     if enemy.is_hit(proj):
                         enemy.health-=1
                         projectiles.remove(proj)
-                        player_score += enemy.score()
-                        #update the score section on the ingame menu
                         if enemy.health <= 0:
+                            player_score += enemy.score()
                             if isinstance(enemy, Bonus):
                                 enemy.powerUp(player,shields)
                             row.remove(enemy)
@@ -155,11 +157,25 @@ def main():
                                 enemy_last_fire.pop(count) 
                 count +=1                     
                
+            for shield in shields:
+                if shield.is_hit(proj):
+                    projectiles.remove(proj)
+                    shield.health-=1
+                    if shield.health == 0:
+                        shields.remove(shield)
 
             if proj.is_off_screen() and proj in projectiles:
                 projectiles.remove(proj)
-            
+
+        enemyMethods.move(enemy_list, enemy_spawn_rate, enemy_speed,enemy_last_fire, enemy_projectiles)
+
+        if len(enemy_list)>0:
+            lowest_enemy = enemy_list[0][0].y
+            if lowest_enemy <= LOWER_BOUND:
+                running = False
+                break
         
+                 
         stddraw.show(20)
 
 if __name__ == '__main__':
