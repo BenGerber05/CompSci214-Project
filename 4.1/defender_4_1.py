@@ -169,7 +169,7 @@ def main():
 
         enemyMethods.move(enemy_list, enemy_spawn_rate, enemy_speed,enemy_last_fire, enemy_projectiles)
 
-        if len(enemy_list)>0 and len(enemy_list[0][0])>0:
+        if len(enemy_list)>0 and len(enemy_list[0])>0:
             lowest_enemy = enemy_list[0][0].y
             if lowest_enemy <= LOWER_BOUND:
                 running = False
