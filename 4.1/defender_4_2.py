@@ -159,7 +159,7 @@ def main():
                     enemy_projectiles.remove(proj)
                     player.health -= 1
                     player.fire_rate = 0.45
-                    player_score -= 1000
+                    player_score -= 100
                     if player.health <= 0: # player dies
                         running = False
                         menu2 = True
