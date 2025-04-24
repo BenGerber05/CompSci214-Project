@@ -24,6 +24,13 @@ Png and jpg models
 Start menu, game over menu, in-game hud
 
 Rourke:
+Enemy Class and Enemy Functions
+Player, enemy, and bunker hit checking
+Difficulty scaling
+Power ups, bunkers, and extra lives
+Enemies Counterattack
+
+
 
 Ben:
 
