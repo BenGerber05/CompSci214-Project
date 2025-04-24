@@ -6,7 +6,6 @@ from picture import Picture
 import time
 from player_4_1 import Player
 from shield_4_1 import Shield
-import pygame
 
 class Enemy:
 
@@ -103,8 +102,6 @@ class Bonus(Enemy): #Drops Power ups
      def draw(self): 
         stddraw.picture(self.bonus_image, self.x, self.y, self.image_scalar  ,  self.image_scalar )
      def powerUp(self,player:Player, shields:list):
-        power_up_sound = pygame.mixer.Sound("PowerUp.mp3")
-        power_up_sound.play()
         r = random.random()
         if r <= 0.5:
             if len(shields) == 3: #Increase health of all shields  
