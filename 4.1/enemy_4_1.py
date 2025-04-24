@@ -78,7 +78,7 @@ class Shooter(Enemy): #Shoots standard bullets
     def draw(self):
         stddraw.picture(self.shooter_image, self.x, self.y,  self.image_scalar , self.image_scalar )
     def shoot(self, enemy_projectiles):
-        proj = Projectile(self.x, self.y - Enemy.HALF_LENGTH, -90)
+        proj = Projectile(self.x, self.y - Enemy.HALF_LENGTH, 180)
         enemy_projectiles.append(proj)
     def score(self):
         return 200  
@@ -90,7 +90,7 @@ class Bomber(Enemy): #Shoots bullets with blast radius
     def draw(self):
         stddraw.picture(self.bomber_image, self.x, self.y, self.image_scalar  ,self.image_scalar) 
     def shoot(self, enemy_projectiles):
-        proj = Projectile(self.x, self.y - Enemy.HALF_LENGTH, -90)
+        proj = Projectile(self.x, self.y - Enemy.HALF_LENGTH, 180)
         enemy_projectiles.append(proj)
     def score(self):
         return 300  
