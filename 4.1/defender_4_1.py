@@ -16,6 +16,7 @@ def main():
     pygame.mixer.init()
     shoot_sound = pygame.mixer.Sound("Pew.mp3")
     power_up_sound = pygame.mixer.Sound("PowerUp.mp3")
+    game_over_sound = pygame.mixer.Sound("GameOver.mp3")
     
     enemyMethods = Functions()
         
