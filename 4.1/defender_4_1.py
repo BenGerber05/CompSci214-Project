@@ -107,6 +107,8 @@ def main():
         stddraw.setPenColor(stddraw.WHITE)
         stddraw.text(-0.8, 1.93, "Score: " + str(player_score))
 
+        #Start of change
+        #Put shield hit checking in its own loop
         for shield in shields:
              shield.draw()
              for proj in projectiles[:]:
@@ -121,6 +123,7 @@ def main():
                      shield.health-=1
                      if shield.health == 0:
                          shields.remove(shield)
+        #End of change
         
         # Update and draw enemy projectiles and check player for hits
         for proj in enemy_projectiles[:]:
