@@ -47,6 +47,8 @@ def main():
     Health_1 = Picture("Lives_1.jpg")
     Health_2 = Picture("Lives_2.jpg")
     Health_3 = Picture("Lives_3.jpg")
+
+    GameOver_Screen1 = Picture("GAMEOVER_SCREEN1.png")
     
      # start page ========================
     START_PAGE1 = Picture("START_SCREEN1.png")
@@ -122,6 +124,7 @@ def main():
                 if player.health <= 0:
                     running = False
                     #add game over screen
+                    stddraw.picture(GameOver_Screen1)
                     break
 
             for shield in shields: 
