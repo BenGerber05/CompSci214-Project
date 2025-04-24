@@ -1,10 +1,11 @@
 import stddraw
 from player_4_1 import Player
-from projectile_4_1 import Projectile
+from projectile_4_1 import Projectile, Bomb
 from enemy_4_1 import Functions, Bonus
 from picture import Picture
 import time
 import math
+import pygame
 
 
 
@@ -13,9 +14,13 @@ def main():
     stddraw.setXscale(-1, 1)
     stddraw.setYscale(0, 2)
 
+    pygame.mixer.init()
+    shoot_sound = pygame.mixer.Sound("Pew.mp3")
+    power_up_sound = pygame.mixer.Sound("PowerUp.mp3")
+    
     enemyMethods = Functions()
     projectiles = []
-    player_angle = 90  # fixed upward
+
 
     highest_score:int = -3000
 
@@ -114,7 +119,11 @@ def main():
             
             # Fire projectile
             if player.wants_to_fire():
-                proj = Projectile(player.x, player.y + player.radius, player_angle)
+                shoot_sound.play()
+                if Bonus.powerUp == "BOOM":
+                    proj = Bomb(player.x, player.y + player.radius, player.angle_deg)
+                else:
+                    proj = Projectile(player.x, player.y + player.radius, player.angle_deg)
                 projectiles.append(proj)
             
             # Show score
@@ -177,6 +186,7 @@ def main():
                             if enemy.health <= 0:
                                 player_score += enemy.score()
                                 if isinstance(enemy, Bonus):
+                                    power_up_sound.play()
                                     enemy.powerUp(player,shields)
                                 row.remove(enemy)
                                 if len(row) == 0:
