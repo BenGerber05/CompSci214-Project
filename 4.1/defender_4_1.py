@@ -137,7 +137,7 @@ def main():
                 player_score -= 1000
                 if player.health <= 0:
                     running = False
-                    endgame
+                    
 
             if proj.is_off_screen() and proj in enemy_projectiles:
                 enemy_projectiles.remove(proj)
