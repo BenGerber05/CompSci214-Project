@@ -15,7 +15,8 @@ def main():
 
     pygame.mixer.init()
     shoot_sound = pygame.mixer.Sound("Pew.mp3")
-
+    power_up_sound = pygame.mixer.Sound("PowerUp.mp3")
+    
     enemyMethods = Functions()
         
     projectiles = []
@@ -166,6 +167,7 @@ def main():
                         if enemy.health <= 0:
                             player_score += enemy.score()
                             if isinstance(enemy, Bonus):
+                                power_up_sound.play()
                                 enemy.powerUp(player,shields)
                             row.remove(enemy)
                             if len(row) == 0:
