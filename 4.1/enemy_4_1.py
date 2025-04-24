@@ -23,9 +23,12 @@ class Enemy:
 
     LEFT_BOUND = ALIEN_SIZE - 1
     RIGHT_BOUND = 1-ALIEN_SIZE
+    LOWER_BOUND = 0.3
 
     SCREEN_WIDTH = 2
     SCREEN_HEIGHT = 2
+
+
 
     FIRE_RATE = 2 # 1 bullet every 2 seconds
     FIRE_CHANCE = 0.6 # change now
@@ -153,6 +156,12 @@ class Functions: #Methods to be used on an array of enemies
                     last_fire[count] = time.time()
                     fire_row = True
             for enemy in row:
+                if enemy.y <= Enemy.LOWER_BOUND and running:
+                    running = False
+                    #print("Game Over")
+                    #print(running)
+                    break
+
                 if fire_row and isinstance(enemy, (Bomber, Shooter)):
                     fire = random.random()
                     if fire<= Enemy.FIRE_CHANCE: #Each enemy in the row eligible to fire shoots if the random number is lower than the fire chance
