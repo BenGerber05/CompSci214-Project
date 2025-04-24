@@ -200,6 +200,8 @@ def main():
         stddraw.setPenColor(stddraw.WHITE)
         while menu2:
             #display endmenu
+            pygame.mixer.music.load("GameOver.mp3")
+            pygame.mixer.music.set_volume(0.5)
             stddraw.clear()
             stddraw.picture(GameOver1, 0, 1, 2.3, 2.3)
             stddraw.text(0, 0.75, str(player_score))
