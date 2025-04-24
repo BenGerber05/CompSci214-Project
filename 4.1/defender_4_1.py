@@ -1,6 +1,6 @@
 import stddraw
 from player_4_1 import Player
-from projectile_4_1 import Projectile
+from projectile_4_1 import Projectile, Bomb
 from enemy_4_1 import Functions, Bonus
 from picture import Picture
 import time
@@ -104,7 +104,10 @@ def main():
         # Fire projectile
         if player.wants_to_fire():
             shoot_sound.play()
-            proj = Projectile(player.x, player.y + player.radius, player.angle_deg)
+            if Bonus.powerUp == "BOOM":
+                proj = Bomb(player.x, player.y + player.radius, player.angle_deg)
+            else:
+                proj = Projectile(player.x, player.y + player.radius, player.angle_deg)
             projectiles.append(proj)
         
         # Show score
