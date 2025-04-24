@@ -14,12 +14,10 @@ def main():
     stddraw.setYscale(0, 2)
 
     enemyMethods = Functions()
-        player = Player(x=0, y=0.15, fire_rate=0.45, health=3, angle_deg = 0)
+        
     projectiles = []
 
-        player_score = 0
-
-        START_TIME = time.time()
+        
 
     ENEMY_START_SPAWN_RATE = 0.4
     enemy_spawn_rate = 0
@@ -29,13 +27,13 @@ def main():
 
     enemy_projectiles = []
 
-        lowest_enemy = 0
+       
     LOWER_BOUND = 0.2
 
     spawn_scale = 0
     speed_scale = 0
 
-        enemy_list = [enemyMethods.spawnRow(ENEMY_START_SPAWN_RATE,enemy_last_fire)]
+        
 
     lowest_enemy: float 
 
@@ -70,7 +68,12 @@ def main():
 
 
     while running:
- 
+        player = Player(x=0, y=0.15, fire_rate=0.45, health=3, angle_deg = 0)
+        player_score = 0
+        START_TIME = time.time()
+        lowest_enemy = 0
+        enemy_list = [enemyMethods.spawnRow(ENEMY_START_SPAWN_RATE,enemy_last_fire)]
+        
         current_time = time.time() - START_TIME
         
         spawn_scale = math.log(current_time/400 + 1) #scales such that spawn rate increases logarithmically and reaches 1 after around 5 minutes
