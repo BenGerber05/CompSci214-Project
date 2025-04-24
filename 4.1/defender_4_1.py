@@ -16,7 +16,6 @@ def main():
     enemyMethods = Functions()
     player = Player(x=0, y=0.15, fire_rate=0.45, health=3, angle_deg = 0)
     projectiles = []
-    player_angle = 90  # fixed upward
 
     player_score = 0
 
@@ -98,7 +97,7 @@ def main():
         
         # Fire projectile
         if player.wants_to_fire():
-            proj = Projectile(player.x, player.y + player.radius, player_angle)
+            proj = Projectile(player.x, player.y + player.radius, player.angle_deg)
             projectiles.append(proj)
         
         # Show score
