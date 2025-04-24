@@ -1,5 +1,6 @@
 import math
 import stddraw
+import pygame
 
 class Projectile:
     def __init__(self, x, y, angle_deg, speed=0.02):
@@ -35,6 +36,8 @@ class Bomb(Projectile):
 
     def explode(self, enemies):
         """Explode and damage enemies within the explosion radius."""
+        bomb_sound = pygame.mixer.Sound("Bomb.mp3")
+        bomb_sound.play()
         # List of directions to check (neighbors around the bomb)
         directions = [(-1, 0), (1, 0), (0, -1), (0, 1), 
                       (-1, -1), (-1, 1), (1, -1), (1, 1)]
