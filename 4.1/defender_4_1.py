@@ -68,8 +68,10 @@ def main():
             key = stddraw.nextKeyTyped().lower() # account for caps
             if key == 'e':
                 running = True # only start main game loop now
-
-    # start page ========================
+             if key == 'q':
+                running = False
+                break
+    # ========================
     
     while running:
 
