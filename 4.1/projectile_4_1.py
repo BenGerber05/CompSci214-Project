@@ -8,8 +8,8 @@ class Projectile:
         self.speed = speed
         # Convert angle to radians for math functions
         angle_rad = math.radians(angle_deg)
-        self.x_vel = speed * math.cos(angle_rad)
-        self.y_vel = speed * math.sin(angle_rad)
+        self.x_vel = speed * math.sin(angle_rad)
+        self.y_vel = speed * math.cos(angle_rad)
         self.radius = 0.02
 
     def update(self):
