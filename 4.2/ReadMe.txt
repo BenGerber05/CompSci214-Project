@@ -33,7 +33,10 @@ Enemies Counterattack
 
 
 Ben:
-
+Projectile class
+Bomb explosion function
+Sound effects
+Turret functionality for projectiles
 
 Resources used:
 https://introcs.cs.princeton.edu/java/stdlib/javadoc/StdDraw.html - Princeton university stddraw site
