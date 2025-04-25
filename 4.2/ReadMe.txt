@@ -17,13 +17,13 @@ Different projectiles
 
 Task division:
 
-Zak: 
+Zak: 27855325
 Player movement
 Player rotation 
 Png and jpg models
 Start menu, game over menu, in-game hud
 
-Rourke:
+Rourke: 27547957
 Enemy Class and Enemy Functions
 Player, enemy, and bunker hit checking
 Difficulty scaling
@@ -33,7 +33,7 @@ Game Loop
 
 
 
-Ben:
+Ben: 27943607
 Projectile class
 Bomb explosion function
 Sound effects
