@@ -2,7 +2,7 @@ import math
 import stddraw
 import pygame
 
-class Projectile:
+class Projectile: #Created by Ben: 27943607
     def __init__(self, x, y, angle_deg, speed=0.02):
         self.x = x
         self.y = y
