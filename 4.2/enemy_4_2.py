@@ -7,7 +7,7 @@ import time
 from player_4_1 import Player
 from shield_4_1 import Shield
 
-class Enemy:
+class Enemy: # This fie was created by Rourke: 27547957
 
    
     HOR_SPACING = 0.25
