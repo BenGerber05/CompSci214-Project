@@ -163,7 +163,7 @@ def main(): #Worked on by Rourke: 27547957, Ben: 27943607, and Zak 27855325
                              shields.remove(shield)
             #End of change
             
-            # Update and draw enemy projectiles and check player for hits
+            # Update and draw enemy projectiles and check player for hits: Rourke: 27547957 and Ben: 27943607
             for proj in enemy_projectiles[:]:
                 proj.update()
                 proj.draw()
