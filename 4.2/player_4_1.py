@@ -4,7 +4,7 @@ from color import Color  # Needed for rotating logic
 from projectile_4_1 import Projectile
 import time
 
-class Player:
+class Player: #Created by Zac: 27855325 and Ben: 27943607
     IMAGE_SCALAR = 0.4
     PINK_SHIP = Picture("Pink_Ship.png")
 
@@ -34,7 +34,7 @@ class Player:
         if left_limit <= next_x <= right_limit:
             self.x = next_x
 
-    def handle_key(self):
+    def handle_key(self): #Ben: 27943607
         """Set velocity or actions based on key input."""
         if stddraw.hasNextKeyTyped():
             key = stddraw.nextKeyTyped().lower()
