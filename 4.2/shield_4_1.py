@@ -2,7 +2,7 @@ import stddraw
 from projectile_4_1 import Projectile
 
 
-class Shield:
+class Shield: #Created by Rourke: 27547957
     
     START_HEALTH = 4
 
