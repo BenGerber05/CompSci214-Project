@@ -9,10 +9,12 @@ import pygame
 
 
 
-def main():
+def main(): #Worked on by Rourke: 27547957, Ben: 27943607, and Zak 27855325
     
     stddraw.setXscale(-1, 1)
     stddraw.setYscale(0, 2)
+
+    #Sounds by Ben: 27943607
 
     pygame.mixer.init()
     shoot_sound = pygame.mixer.Sound("Pew.mp3")
@@ -64,7 +66,7 @@ def main():
 
     running = False # dont run main game yet
 
-    while ingame:
+    while ingame: 
 
         enemyMethods = Functions() 
         Functions.ref_left = Enemy.HOR_START
@@ -80,7 +82,7 @@ def main():
         player = Player(x=0, y=0.15, fire_rate=0.45, health=3, angle_deg = 0)
         enemy_list = [enemyMethods.spawnRow(ENEMY_START_SPAWN_RATE,enemy_last_fire)]
 
-        while menu1:
+        while menu1: #Menu by Zak: 27855325
             stddraw.clear()
             stddraw.picture(START_PAGE1, 0, 1, 2.3, 2.3)
             stddraw.show(150)
@@ -102,7 +104,7 @@ def main():
         # start page ========================
 
 
-        while running:
+        while running: #Game Loop and difficulty Rourke: 27547957
      
             current_time = time.time() - start_time
             
@@ -119,7 +121,7 @@ def main():
             running = player.handle_key()
             player.draw()
 
-            #health hud ===============
+            #health hud =============== Zak: 27855325
             if player.health == 3:
                 stddraw.picture(Health_3, 0.7,1.9,0.5,0.15)
             elif player.health == 2:
@@ -128,7 +130,7 @@ def main():
                 stddraw.picture(Health_1, 0.7,1.9,0.5,0.15)
             # =========================
             
-            # Fire projectile Test: 20:52
+            # Fire projectile 
             if player.wants_to_fire() :
                 shoot_sound.play()
                 if Bonus.powerUp == "BOOM":
@@ -137,14 +139,14 @@ def main():
                     proj = Projectile(player.x, player.y + player.radius, player.angle_deg)
                 projectiles.append(proj)
             
-            # Show score
+            # Show score Zak: 27855325
             stddraw.setFontSize(s=22)
             stddraw.setFontFamily(f="Arial")
             stddraw.setPenColor(stddraw.WHITE)
             stddraw.text(-0.8, 1.93, "Score: " + str(player_score))
 
             #Start of change
-            #Put shield hit checking in its own loop
+            #Rourke: 27547957
             for shield in shields:
                  shield.draw()
                  for proj in projectiles[:]:
@@ -192,12 +194,12 @@ def main():
                 if proj.is_off_screen() and proj in enemy_projectiles:
                     enemy_projectiles.remove(proj)
             
-            # Update and draw projectiles
+            # Update and draw projectiles: Ben: 27943607
             for proj in projectiles[:]:
                 proj.update()
                 proj.draw()
 
-                # Check collision with enemies
+                # Check collision with enemies, Ben: 27943607 and Rourke 27547957
                 count = 0
                 for row in enemy_list:
                     for enemy in row:
@@ -230,7 +232,7 @@ def main():
                      
             stddraw.show(20)
         stddraw.setPenColor(stddraw.WHITE)
-        while menu2:
+        while menu2: #Zak: 27855325
             #display endmenu
             pygame.mixer.music.load("GameOver.mp3")
             pygame.mixer.music.set_volume(0.5)
